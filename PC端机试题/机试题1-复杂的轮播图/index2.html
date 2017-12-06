@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			border:0;
+			list-style-type: none;
+			text-decoration: none;
+			font-family:"微软雅黑";
+		}
+		#swip{
+			width:967px;
+			margin:0 auto;
+			height:330px;
+			overflow: hidden;
+			position: relative;
+		}
+		#content{
+			width:5802px;
+		}
+		#content li{
+			float:left;
+		}
+		#list{
+			position: absolute;
+			right:2%;
+			bottom:2%;
+		}
+		#list span{
+			width:24px;
+			height:24px;
+			display: inline-block;
+			text-align: center;
+			line-height: 24px;
+			color:#fff;
+			font-size: 18px;
+			background: url("images/silde-nav.png") no-repeat;
+		}
+		#list span:hover{
+			background: url('images/silde-nav.png') 0px -24px no-repeat;
+		}
+		#header{
+			width:200px;
+			height:24px;
+			position: absolute;
+			bottom: 2%;
+			left:2%;
+			color: #fff;
+			font-size: 12px;
+		}
+	</style>
+	<script src = "js/jquery.min.js"></script>
+	<script>
+		window.onload = function(){
+			var headerc = ["标题1这里修改描述 这里修改描述 这里修改描述","标题2这里修改描述 这里修改描述 这里修改描述","标题3这里修改描述 这里修改描述 这里修改描述","标题4这里修改描述 这里修改描述 这里修改描述","标题5这里修改描述 这里修改描述 这里修改描述","标题6这里修改描述 这里修改描述 这里修改描述"]
+			$("#list span").click(function(){
+				var left = $(this).index()*-967;
+				$("#content").animate({marginLeft:left});
+				$("#list span").css("background","url('images/silde-nav.png') no-repeat")
+				$(this).css("background","url('images/silde-nav.png') 0px -24px no-repeat");
+				$("#header").html(headerc[$(this).index()]).animate()
+			})
+			// setInterval(function(){
+			// 	var left = $(this).index()*-967;
+			// 	var left2 = left-967;
+			// 	$("#content").css("marginLeft","left");
+			// },2000)
+		}
+	</script>
+</head>
+<body>
+	<div id = "swip">
+		<ul id = "content">
+			<li><a href="###"><img src="images/a1.jpg" alt=""></a></li>
+			<li><a href="###"><img src="images/a2.jpg" alt=""></a></li>
+			<li><a href="###"><img src="images/a3.jpg" alt=""></a></li>
+			<li><a href="###"><img src="images/a4.jpg" alt=""></a></li>
+			<li><a href="###"><img src="images/a5.jpg" alt=""></a></li>
+			<li><a href="###"><img src="images/a6.jpg" alt=""></a></li>
+		</ul>
+		<div id = "list">
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+			<span>6</span>
+		</div>
+		<div id = "header"></div>
+	</div>
+</body>
+</html>
